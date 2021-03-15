@@ -1,7 +1,30 @@
 import React from 'react';
+import PeopleIndex from './people_index';
 
-export default () => {
-  return(
-    <h1>REACT IS WORKING!</h1>
-  )
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      people: []
+    }
+  }
+
+  componentDidMount() {
+
+  }
+
+  render() {
+    const { people } = this.state;
+    return(
+      <div className="main-container">
+        <header>
+          Sentia Challenge Application
+        </header>
+        <PeopleIndex people={people} />
+      </div>
+  
+    )
+  }
 };
+
+export default App;
