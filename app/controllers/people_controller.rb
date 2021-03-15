@@ -1,13 +1,19 @@
 class PeopleController < ApplicationController
   def index
     page = params[:page] || 1
-    if params[:sort]
-      @people = Person.sort_by_field(params[:sort],page)
-    else 
-      @people = Person.all
-        .page(page).per(10)
-        .includes(:locations, :affiliations)
+    @people = Person.all
+
+    if params[:filter]
+      @people = Person.search_by_filter(@people, params[:filter])
     end
+    
+    if params[:sort]
+      @people = Person.sort_by_field(@people, params[:sort])
+    end
+    @count = @people.length
+    @people = @people
+      .page(page).per(10)
+      .includes(:locations, :affiliations)
   end
 
   def upload

@@ -6,4 +6,4 @@ json.people do
   end
 end
 
-json.total Person.all.count
+json.total @count

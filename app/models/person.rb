@@ -50,11 +50,13 @@ class Person < ApplicationRecord
     end
   end
 
-  def self.sort_by_field(field,page)
-    Person.all
-        .order("#{field} ASC")
-        .page(page).per(10)
-        .includes(:locations, :affiliations)
+  def self.sort_by_field(people,field)
+        people.order("#{field} ASC")
+  end
+
+  def self.search_by_filter(people,filter)
+        people
+          .where('first_name LIKE :filter or last_name LIKE :filter or species LIKE :filter or gender LIKE :filter or weapon LIKE :filter or vehicle LIKE :filter', filter: "%#{filter}%")
   end
 
   def create_locations(locations)
