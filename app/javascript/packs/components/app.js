@@ -1,4 +1,5 @@
 import React from 'react';
+import UploadForm from './csv_upload';
 import PeopleIndex from './people_index';
 
 class App extends React.Component {
@@ -28,6 +29,7 @@ class App extends React.Component {
         <header>
           Sentia Challenge Application
         </header>
+        <UploadForm />
         <PeopleIndex people={people} />
       </div>
   

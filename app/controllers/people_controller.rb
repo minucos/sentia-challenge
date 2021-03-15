@@ -4,6 +4,7 @@ class PeopleController < ApplicationController
   end
 
   def upload
+    debugger
     @people = Person.create_from_csv_file(params[:file])
     if completed
       render :index
