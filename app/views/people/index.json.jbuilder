@@ -1,5 +1,5 @@
-json.array! @people do
+json.array! @people do |person|
   json.partial! 'people/person', person: person
   json.locations "#{person.locations.join(', ')}"
-  json.affilations "#{person.affilations.join(', ')}"
+  json.affilations "#{person.affiliations.join(', ')}"
 end

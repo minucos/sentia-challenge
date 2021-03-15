@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root "static_pages#root"
 
-  resources :people, only: [:index], defaults: :json do
+  resources :people, only: [:index], defaults: { format: :json } do
     post :upload, on: :collection
   end
 end

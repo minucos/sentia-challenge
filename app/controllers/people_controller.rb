@@ -1,6 +1,6 @@
 class PeopleController < ApplicationController
   def index
-    @people = Person.all.include(:locations, :affiliations)
+    @people = Person.all.includes(:locations, :affiliations)
   end
 
   def upload
