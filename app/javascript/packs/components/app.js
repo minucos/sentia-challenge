@@ -9,6 +9,7 @@ class App extends React.Component {
       people: [],
       error: false
     }
+    this.updatePeople = this.updatePeople.bind(this);
   }
 
   componentDidMount() {
@@ -22,14 +23,19 @@ class App extends React.Component {
       })
   }
 
+  updatePeople(people) {
+    this.setState({people})
+  }
+
   render() {
     const { people } = this.state;
+
     return(
       <div className="main-container">
         <header>
           Sentia Challenge Application
         </header>
-        <UploadForm />
+        <UploadForm updatePeople={this.updatePeople}/>
         <PeopleIndex people={people} />
       </div>
   
