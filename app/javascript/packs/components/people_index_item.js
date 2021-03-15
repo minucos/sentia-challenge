@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PeopleIndexItem = (props) => {
+const PeopleIndexItem = ({person}) => {
   const { 
     first_name,
     last_name,
@@ -10,7 +10,7 @@ const PeopleIndexItem = (props) => {
     affiliations,
     weapon,
     vehicle
-  } = props;
+  } = person;
 
   return(
     <tr className="row">

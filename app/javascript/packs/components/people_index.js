@@ -3,8 +3,9 @@ import PeopleIndexItem from './people_index_item';
 
 const PeopleIndex = (props) => {
   const people = props.people.map((person, id) => {
-    <PeopleIndexItem key={id} person={person} />
+    return <PeopleIndexItem key={id} person={person} />
   })
+  
   return(
     <table>
       <thead>

@@ -5,12 +5,20 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      people: []
+      people: [],
+      error: false
     }
   }
 
   componentDidMount() {
-
+    fetch('./people')
+      .then(response => {
+        response.json()
+          .then(
+            people => this.setState({ people: people, error: false }),
+            error => this.setState({ error: true })
+          )
+      })
   }
 
   render() {
