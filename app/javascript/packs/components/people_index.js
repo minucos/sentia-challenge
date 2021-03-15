@@ -13,25 +13,25 @@ const PeopleIndex = (props) => {
       <table>
         <thead>
           <tr className="table-title-row">
-            <th className="person-titles" >
+            <th className="table-titles" onClick={() => props.sortBy("first_name")}>
               Name
             </th>
-            <th className="table-titles" >
+            <th className="table-titles">
               Location
             </th>
-            <th className="table-titles" >
+            <th className="table-titles" onClick={() => props.sortBy("species")}>
               Species
             </th>
-            <th className="table-titles" >
+            <th className="table-titles" onClick={() => props.sortBy("gender")}>
               Gender
             </th>
-            <th className="table-titles" >
+            <th className="table-titles">
               Affiliations
             </th>
-            <th className="table-titles" >
+            <th className="table-titles" onClick={() => props.sortBy("weapon")}>
               Weapon
             </th>
-            <th className="table-titles" >
+            <th className="table-titles" onClick={() => props.sortBy("vehicle")}>
               Vehicle
             </th>
           </tr>

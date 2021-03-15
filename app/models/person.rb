@@ -50,6 +50,13 @@ class Person < ApplicationRecord
     end
   end
 
+  def self.sort_by_field(field,page)
+    Person.all
+        .order("#{field} ASC")
+        .page(page).per(10)
+        .includes(:locations, :affiliations)
+  end
+
   def create_locations(locations)
     locations.each do |location|
       existing_location = Location.find_by(name: location)
