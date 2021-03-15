@@ -1,1 +1,1 @@
-json.extract! person, :id, :first_name, :last_name, :gender, :vehicle, :weapon
+json.extract! person, :id, :first_name, :last_name, :species, :gender, :vehicle, :weapon

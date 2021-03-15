@@ -1,6 +1,7 @@
 class PeopleController < ApplicationController
   def index
-    @people = Person.all.includes(:locations, :affiliations)
+    page = params[:page] || 1
+    @people = Person.all.page(page).per(10).includes(:locations, :affiliations)
   end
 
   def upload

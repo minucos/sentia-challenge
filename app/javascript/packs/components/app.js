@@ -7,28 +7,39 @@ class App extends React.Component {
     super(props);
     this.state = {
       people: [],
-      error: false
+      error: false,
+      page: 1,
+      total: 0
     }
     this.updatePeople = this.updatePeople.bind(this);
+    this.changePage = this.changePage.bind(this);
   }
 
   componentDidMount() {
-    fetch('./people')
+    fetch('./people', { page: this.state.page })
       .then(response => {
         response.json()
           .then(
-            people => this.setState({ people: people, error: false }),
+            data => this.setState({ 
+              people: data.people, 
+              total: data.total, 
+              error: false 
+            }),
             error => this.setState({ error: true })
           )
       })
   }
 
   updatePeople(people) {
-    this.setState({people})
+    this.setState({ people, page: 1 })
+  }
+
+  changePage(x) {
+    this.setState({ page: this.state.page + x })
   }
 
   render() {
-    const { people } = this.state;
+    const { people, page, total } = this.state;
 
     return(
       <div className="main-container">
@@ -36,7 +47,12 @@ class App extends React.Component {
           Sentia Challenge Application
         </header>
         <UploadForm updatePeople={this.updatePeople}/>
-        <PeopleIndex people={people} />
+        <PeopleIndex 
+          people={people} 
+          changePage={this.changePage} 
+          page={page}
+          total={total}
+        />
       </div>
   
     )
