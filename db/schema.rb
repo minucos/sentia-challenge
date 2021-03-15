@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_15_022653) do
+ActiveRecord::Schema.define(version: 2021_03_15_023542) do
 
   create_table "affiliations", force: :cascade do |t|
     t.string "name", null: false
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2021_03_15_022653) do
     t.string "vehicle"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "gender"
   end
 
 end
