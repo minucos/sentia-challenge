@@ -9,6 +9,7 @@ class UploadForm extends React.Component {
     }
     this.submitForm = this.submitForm.bind(this)
     this.update = this.update.bind(this)
+    this.deleteAll = this.deleteAll.bind(this)
   }
 
   update(e) {
@@ -31,17 +32,29 @@ class UploadForm extends React.Component {
       )
   }
 
+  deleteAll(e) {
+    e.preventDefault();
+    const token = document.querySelector('[name=csrf-token]').content;
+    axios.defaults.headers.common['X-CSRF-TOKEN'] = token;
+    
+    axios.delete('./people/destroy_all')
+      .then(_ => this.props.updatePeople([]))
+  }
+
   render() {
     return(
-      <form onSubmit={this.submitForm}>
-        <input 
-          name="file" 
-          type="file" 
-          accept=".csv" 
-          onChange={this.update}
-        />
-        <input type="submit" value="Upload File" />
-      </form>
+      <div className="form-container">
+        <form onSubmit={this.submitForm}>
+          <input 
+            name="file" 
+            type="file" 
+            accept=".csv" 
+            onChange={this.update}
+            />
+          <input type="submit" value="Upload File" />
+          <button onClick={this.deleteAll}>Clear List</button>
+        </form>
+      </div>
     )
   }
 };

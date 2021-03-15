@@ -11,4 +11,9 @@ class PeopleController < ApplicationController
       render json: "Something went wrong", status: 422
     end
   end
+
+  def destroy_all
+    Person.destroy_all
+    render :index
+  end
 end

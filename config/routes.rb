@@ -5,5 +5,6 @@ Rails.application.routes.draw do
 
   resources :people, only: [:index], defaults: { format: :json } do
     post :upload, on: :collection
+    delete :destroy_all, on: :collection
   end
 end
